@@ -45,7 +45,6 @@ const secret= process.env.SECRET || 'badsecret!'
 
 const store=MongoStore.create({
     mongoUrl:dbUrl,
-    collectionName: 'sessions',
     secret,
     ttl: 24*60*60
 })
@@ -62,6 +61,7 @@ const sessionConfig={
     saveUninitialized:true,
     cookie:{
         httpOnly:true,
+        secure:true,
         expires:Date.now() + 1000*60*60*24*7,
         maxAge: 1000*60*60*24*7
     }
