@@ -36,6 +36,8 @@ mongoose.connect(dbUrl)
 app.set('views', path.join(__dirname,'/views/campgrounds'))
 app.set('view engine', 'ejs')
 
+app.set('trust proxy', 1);
+
 app.engine('ejs', ejsMate)
 
 app.use(methodOverride('_method'))
@@ -61,7 +63,7 @@ const sessionConfig={
     saveUninitialized:true,
     cookie:{
         httpOnly:true,
-        secure: true,
+        secure: process.env.NODE_ENV === 'production',
         expires:Date.now() + 1000*60*60*24*7,
         maxAge: 1000*60*60*24*7
     }
