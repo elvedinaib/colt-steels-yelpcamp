@@ -1,0 +1,52 @@
+<%layout('../layouts/boilerplate')%>
+
+<div class="row mt-2 mb-3">
+    <h1 class="text-center mb-3">Add new campground</h1>
+    <div class="col-md-6 offset-md-3">
+        <form action="/campgrounds" method="post" enctype="multipart/form-data" class="mb-3 needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title: </label>
+                <input type="text" class="form-control" name="camp[title]" id="title" placeholder="Enter title" required>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location: </label>
+                <input type="text" class="form-control" name="camp[location]" id="location" placeholder="Enter location" required>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price: </label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">$</span>
+                    <input type="number" class="form-control" name="camp[price]" id="price" aria-label="price" aria-describedby="price-label" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                  </div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description: </label>
+                <textarea type="text" class="form-control" name="camp[description]" id="description" placeholder="Enter description" required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+            </div>
+            <div class="mb-3">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="image" id="image" multiple required>
+                    <label class="custom-file-label" for="image">Choose image(s)...</label>
+                </div> 
+            </div>
+            <div class="mb-3 form-check">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            
+        </form>
+            <a href="/campgrounds" class="btn btn-primary">Back to Homepage</a>   
+    </div>
+</div>
+

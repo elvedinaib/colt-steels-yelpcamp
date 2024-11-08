@@ -1,0 +1,41 @@
+<%layout('../layouts/boilerplate')%>
+
+<div id="cluster-map"></div>
+<h1 class="text-center">Welcome to YelpCamp!</h1>
+<div class="text-center">
+    <a class="btn btn-primary" href="/campgrounds/new">Add new campground</a>
+</div>
+
+
+<div class="container row mt-4">
+    <% for(let campground of campgrounds){ %>
+    <div class="col-8 offset-2 mb-3">
+        <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-5 d-flex align-items-center">
+                <% if(campground.images.length>0){ %>
+                <img src="<%=campground.images[0].url%>" class="img-fluid rounded-start" alt="Image cannot be loaded">
+                <% }else{ %>
+                  <img src="https://miro.medium.com/v2/resize:fit:1358/1*E2Oo4FZcp2dj4EIIoLK4gw.jpeg" class="img-fluid rounded-start" alt="Image cannot be loaded">
+                <% } %>
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <h5 class="card-title"><%=campground.title%></h5>
+                  <p class="card-text"><small class="card-text text-muted d-block"><%=campground.location%></small>
+                  <small class="card-text d-block"><b>price: $<%=campground.price%>/night</b></small></p>
+                  <p class="card-text"><%=campground.description%></p>
+                  <a class="btn btn-primary" href="/campgrounds/<%=campground._id%>">View</a>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</div>
+
+<script>
+  const campgrounds = <%- JSON.stringify(campgrounds) %>
+</script>
+<script src="/javascripts/clusterMap.js"></script>
